@@ -32,24 +32,7 @@ function addItem(){
 
 function liClick(){
     console.log( 'in liClick', $( this ).text() );
-    removeFromItems( $( this ).text() );
 } // liClick
-
-function removeFromItems( itemToRemove ){
-console.log( 'in item to remove:', itemToRemove );
-
-    // loop through items array
-    for( let i=0; i<items; i++ ){
-        // if itemToRemove matches this item's name
-        if( item[i].size + ' ' + item[i].color + ' ' + item[i].name == itemToRemove ){
-            // remove this item from array
-            items.splice( i, 1 );
-            showItems();
-            return true;
-        }
-    }
-    return false;
-} // end removeFromItems
 
 function showItems(){
     // target output list by id & save it
@@ -59,6 +42,13 @@ function showItems(){
     // loop through items array
     for ( item of items){
         // display each on DOM
-        el.append( '<li>' + item.size + ' ' + item.color + ' ' + item.name + '</li>' );
+        let outputString = '<li>';
+        outputString += item.size;
+        outputString += ' ';
+        outputString += item.color;
+        outputString += ' ';
+        outputString += item.name;
+        outputString += '</li>';
+        el.append( outputString );
     } // end for
 } //end showItems
